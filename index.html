@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+    <link rel="stylesheet/less" type="text/less" href="style.less">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.0.2/less.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body data-spy="scroll">
+<header class="app-header">
+    <div class="header-wrapper">
+        <a class="brand-logo" href="#Main">
+            <img src="./assets/images/logo-central-coffee.png"></a>
+        <nav class="header-nav">
+            <a href="#About">About</a>
+            <a href="#Menu">Menu</a>
+            <a href="#Location">Location</a>
+        </nav>
+        <a id="open-menu" class="open-menu" href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+    </div>
+</header>
+<aside id="offcanvas" class="offcanvas">
+    <div class="offcanvas-content">
+        <a id="close-btn" class="close-btn" href="#">
+            <span></span>
+            <span></span>
+        </a>
+        <a class="offcanvas-item" href="#About">About</a>
+        <a class="offcanvas-item" href="#Menu">Menu</a>
+        <a class="offcanvas-item" href="#Location">Location</a>
+    </div>
+</aside>
+<main>
+    <section id="Main" class="container">
+        <div class="overlay"></div>
+        <div class="full-width">
+            <hgroup>
+                <h1>Central Coffee</h1>
+                <h3>Bespoke organically-sourced coffee</h3>
+            </hgroup>
+        </div>
+
+    </section>
+    <section id="About" class="block-wrapper">
+        <div class="container">
+            <div class="block-content text">
+                <h2>About</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis sagittis urna, a fermentum mauris. Mauris sagittis eu urna at sollicitudin. Sed et dui accumsan, vulputate dui ut, fringilla tellus. Vivamus a ex commodo, vulputate metus gravida, congue arcu. Fusce vehicula laoreet lorem vel lacinia. Etiam ac erat turpis. Morbi nec urna aliquet, placerat nisl ac, venenatis justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+                <div class="grid-row">
+                    <div class="image-bg"></div>
+                    <div class="image-bg"></div>
+                    <div class="image-bg"></div>
+                    <div class="image-bg"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="Menu" class="block-wrapper">
+        <div class="container">
+            <div class="block-content text">
+                <h2>Menu</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis sagittis urna, a fermentum mauris. Mauris sagittis eu urna at sollicitudin. Sed et dui accumsan, vulputate dui ut, fringilla tellus. Vivamus a ex commodo, vulputate metus gravida, congue arcu. Fusce vehicula laoreet lorem vel lacinia. Etiam ac erat turpis. Morbi nec urna aliquet, placerat nisl ac, venenatis justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="grid-row">
+                    <div class="grid-item">
+                        <header>DRINKS</header>
+                        <img src="./assets/images/food-3249174_640.jpg">
+                        <div>
+                            <p>La Catalina (Colombia)</p>
+                            <p>Guarumales (Ecuador)</p>
+                            <p>Rukondo (Rwanda)</p>
+                            <p>Peppermint Tea</p>
+                            <p>Black tea</p>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <header>FOOD</header>
+                        <img src="./assets/images/coffee-3297326_640.jpg">
+                        <div>
+                            <p>Frittata (Herb and Veggie, Italian, Corned Beef)</p>
+                            <p>Breakfast sandwich</p>
+                            <p>Cobb salad</p>
+                            <p>Various baked goods</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="Location" class="block-wrapper">
+        <div class="container">
+            <div class="block-content text">
+                <h2>Location</h2>
+                <div class="grid-row">
+                    <div id="googleMap"></div>
+                    <div class="map-overlay">
+                        <ul>
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i><p>500 West Main St<br/> Hannis, NC 02601</p>
+                            </li>
+                            <li>
+                                <i class="fa fa-clock"></i><p>Sunday @ 9:30 and 11am<br/>Wednesday at 6pm</p>
+                            </li>
+                            <li>
+                                <i class="fa fa-phone-volume"></i><p>(508) 555-6640</p> <i class="fa fa-envelope"></i> <a href="mailto:contact@yourname.com">contact@yourname.com</a>
+                            </li>
+                            <li><a href="javascript:void(0)">DIRECTIONS</a><a href="javascript:void(0)">LOCATIONS</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
+<footer> @2018 Central Coffee</footer>
+
+</body>
+<script>
+    const menuObject = document.getElementById("open-menu");
+    menuObject.addEventListener('click', function() {
+        var asideObject = document.getElementById('offcanvas');
+        asideObject.classList.add('open');
+    });
+
+    $("aside").find("a").click(function(event){
+        event.preventDefault();
+        var asideObject = $("#offcanvas");
+        var section = $(this).attr("href");
+        asideObject.removeClass("open");
+        if( section === "#") {
+            return false;
+        } else {
+
+            $("html, body").animate({
+                scrollTop: ($(section).offset().top) - 80
+            });
+        }
+    });
+
+    const infoWindow = document.querySelector('.map-overlay');
+    console.log(infoWindow);
+    function googleMap() {
+        const mapCanvas = document.getElementById("googleMap");
+        const mapProps = {
+            center : new google.maps.LatLng(35.221513, -80.821915),
+            zoom: 8
+        }
+
+        var map = new google.maps.Map(mapCanvas, mapProps);
+        var marker = new google.maps.Marker({
+            position: mapProps.center
+        });
+        marker.setMap(map);
+
+        google.maps.event.addListener(map, 'mouseover', function(){
+            infoWindow.classList.add('fade');
+        });
+        google.maps.event.addListener(map, 'mouseout', function(){
+            infoWindow.classList.remove('fade');
+        });
+    }
+
+    $("header").find("a").click(function(event){
+        event.preventDefault();
+        var section = $(this).attr("href");
+        if( section === "#") {
+            return false;
+        } else {
+            $("html, body").animate({
+                scrollTop: ($(section).offset().top) - 100
+            })
+        }
+    });
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAW3ghpgq3l9YJwrZFyXKAkHwllrZQ10j0&callback=googleMap" async defer></script>
+</html>
